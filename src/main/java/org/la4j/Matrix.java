@@ -248,11 +248,9 @@ public abstract class Matrix implements Iterable<Double> {
             throw new IllegalArgumentException("Unknown field type: " + field + ".");
         }
 
-        String symmetry = header.nextToken();
-        if (!symmetry.equals("general")) {
-            throw new IllegalArgumentException("Unknown symmetry type: " + symmetry + ".");
-        }
-
+        // Ignore symmetry field
+        header.nextToken();
+        
         String majority = (header.hasMoreTokens()) ? header.nextToken() : "row-major";
 
         String nextToken = body.nextToken();
